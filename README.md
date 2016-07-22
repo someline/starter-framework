@@ -1,4 +1,4 @@
-# Someline Starter Framework
+# Someline Starter Framework (Kernel)
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
