@@ -4,12 +4,12 @@
  * User: Libern
  */
 
-namespace Someline\Repositories\Interfaces;
+namespace Someline\Base\Repositories\Interfaces;
 
 use Illuminate\Database\Eloquent\Model;
-use Prettus\Repository\Contracts\RepositoryInterface;
+use Prettus\Repository\Contracts\RepositoryInterface as BaseRepositoryInterface;
 
-interface BaseRepositoryInterface extends RepositoryInterface
+interface RepositoryInterface extends BaseRepositoryInterface
 {
 
     /**

@@ -14,7 +14,7 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
-use Someline\Model\BaseModel;
+use Someline\Base\Models\BaseModel;
 use Someline\Model\Interfaces\BaseModelEventsInterface;
 
 class User extends BaseModel implements BaseModelEventsInterface,

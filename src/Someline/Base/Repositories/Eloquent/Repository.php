@@ -4,20 +4,19 @@
  * User: Libern
  */
 
-namespace Someline\Repositories\Eloquent;
+namespace Someline\Base\Repositories\Eloquent;
 
 
-use Someline\Presenters\BasePresenter;
-use Prettus\Repository\Contracts\RepositoryCriteriaInterface;
-use Prettus\Repository\Contracts\RepositoryInterface;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
-use Someline\Repositories\Criteria\AuthUserCriteria;
+use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Exceptions\RepositoryException;
 use Prettus\Validator\Contracts\ValidatorInterface;
-use Someline\Repositories\Interfaces\BaseRepositoryInterface;
+use Someline\Base\Repositories\Interfaces\RepositoryInterface;
+use Someline\Presenters\Presenter;
+use Someline\Repositories\Criteria\AuthUserCriteria;
 
-abstract class BaseRepository extends \Prettus\Repository\Eloquent\BaseRepository implements BaseRepositoryInterface
+abstract class Repository extends BaseRepository implements RepositoryInterface
 {
 
     /**
@@ -185,7 +184,7 @@ abstract class BaseRepository extends \Prettus\Repository\Eloquent\BaseRepositor
      */
     public function setPresenterMeta(array $meta)
     {
-        if ($this->presenter instanceof BasePresenter) {
+        if ($this->presenter instanceof Presenter) {
             $this->presenter->setMeta($meta);
         }
     }

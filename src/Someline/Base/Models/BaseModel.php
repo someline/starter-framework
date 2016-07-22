@@ -4,16 +4,16 @@
  * User: Libern
  */
 
-namespace Someline\Model;
+namespace Someline\Base\Models;
 
 
 use Carbon\Carbon;
-use Someline\Model\Traits\BaseModelEvents;
+use Illuminate\Database\Eloquent\Model;
+use Prettus\Repository\Presenter\ModelFractalPresenter;
 use Someline\Model\Foundation\User;
 use Someline\Model\Interfaces\BaseModelEventsInterface;
 use Someline\Model\Interfaces\FriendStatusInterface;
-use Illuminate\Database\Eloquent\Model;
-use Prettus\Repository\Presenter\ModelFractalPresenter;
+use Someline\Model\Traits\BaseModelEvents;
 
 class BaseModel extends Model implements BaseModelEventsInterface
 {

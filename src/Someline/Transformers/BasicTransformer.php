@@ -7,7 +7,9 @@
 namespace Someline\Transformers;
 
 
-class BasicTransformer extends BaseTransformer
+use Someline\Base\Transformers\Transformer;
+
+class BasicTransformer extends Transformer
 {
 
     /**

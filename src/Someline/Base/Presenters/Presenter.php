@@ -4,14 +4,14 @@
  * User: Libern
  */
 
-namespace Someline\Presenters;
+namespace Someline\Base\Presenters;
 
 
 use Illuminate\Support\Collection;
 use Prettus\Repository\Presenter\FractalPresenter;
 use Illuminate\Pagination\AbstractPaginator;
 
-abstract class BasePresenter extends FractalPresenter
+abstract class Presenter extends FractalPresenter
 {
 
     protected $meta = [];
