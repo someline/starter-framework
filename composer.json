@@ -25,6 +25,9 @@
         "squizlabs/php_codesniffer": "~2.3"
     },
     "autoload": {
+        "files": [
+            "src/Someline/Foundation/helpers.php"
+        ],
         "psr-4": {
             "Someline\\": "src/Someline"
         }
