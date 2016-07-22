@@ -1,18 +1,18 @@
 {
-    "name": ":vendor/:package_name",
-    "type": "library",
-    "description": ":package_description",
+    "name": "someline/starter-framework",
+    "type": "framework",
+    "description": "The Someline Starter Framework.",
     "keywords": [
-        ":vendor",
-        ":package_name"
+        "someline",
+        "starter-framework"
     ],
-    "homepage": "https://github.com/:vendor/:package_name",
+    "homepage": "https://github.com/someline/starter-framework",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": ":author_email",
-            "homepage": ":author_website",
+            "name": "Libern Lin",
+            "email": "libernlin@gmail.com",
+            "homepage": "https://www.someline.com/",
             "role": "Developer"
         }
     ],
@@ -26,12 +26,12 @@
     },
     "autoload": {
         "psr-4": {
-            ":vendor\\:package_name\\": "src"
+            "someline\\starter-framework\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            ":vendor\\:package_name\\": "tests"
+            "someline\\starter-framework\\": "tests"
         }
     },
     "scripts": {
