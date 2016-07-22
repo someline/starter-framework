@@ -4,7 +4,7 @@
  * User: Libern
  */
 
-namespace Someline;
+namespace Someline\Auth;
 
 trait AuthUserHelpers
 {
