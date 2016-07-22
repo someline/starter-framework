@@ -12,8 +12,8 @@ use Illuminate\Database\Eloquent\Relations\Relation;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Exceptions\RepositoryException;
 use Prettus\Validator\Contracts\ValidatorInterface;
+use Someline\Base\Presenters\Presenter;
 use Someline\Base\Repositories\Interfaces\RepositoryInterface;
-use Someline\Presenters\Presenter;
 use Someline\Repositories\Criteria\AuthUserCriteria;
 
 abstract class Repository extends BaseRepository implements RepositoryInterface
