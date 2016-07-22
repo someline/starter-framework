@@ -26,12 +26,12 @@
     },
     "autoload": {
         "psr-4": {
-            "someline\\starter-framework\\": "src"
+            "Someline\\": "src/Someline"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "someline\\starter-framework\\": "tests"
+            "Someline\\Test\\": "tests"
         }
     },
     "scripts": {
