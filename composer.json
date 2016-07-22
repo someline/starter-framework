@@ -33,7 +33,8 @@
     "intervention/imagecache": "~2.1",
     "cviebrock/image-validator": "2.0.*@beta",
     "barryvdh/laravel-ide-helper": "^2.1",
-    "tymon/jwt-auth": "0.5.*"
+    "tymon/jwt-auth": "0.5.*",
+    "someline/rest-api-client": "1.0.x@dev"
   },
   "require-dev": {
     "phpunit/phpunit": "~4.0||~5.0",
