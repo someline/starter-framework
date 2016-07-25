@@ -67,4 +67,31 @@ interface RepositoryInterface extends BaseRepositoryInterface
      */
     public function getIsSearchableForceAndWhere();
 
+    /**
+     * Find data by where conditions
+     *
+     * @param array $where
+     *
+     * @return $this
+     */
+    public function where(array $where);
+
+    /**
+     * Retrieve first data of repository with fail if not found
+     *
+     * @param array $columns
+     *
+     * @return mixed
+     */
+    public function firstOrFail($columns = ['*']);
+
+    /**
+     * Where first
+     *
+     * @param array $where
+     * @param array $columns
+     * @return mixed
+     */
+    public function whereFirst(array $where, $columns = ['*']);
+
 }

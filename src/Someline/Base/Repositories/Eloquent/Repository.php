@@ -197,4 +197,52 @@ abstract class Repository extends BaseRepository implements RepositoryInterface
         return $this->isSearchableForceAndWhere;
     }
 
+    /**
+     * Find data by where conditions
+     *
+     * @param array $where
+     *
+     * @return $this
+     */
+    public function where(array $where)
+    {
+        $this->applyCriteria();
+        $this->applyScope();
+
+        $this->applyConditions($where);
+
+        return $this;
+    }
+
+    /**
+     * Retrieve first data of repository with fail if not found
+     *
+     * @param array $columns
+     *
+     * @return mixed
+     */
+    public function firstOrFail($columns = ['*'])
+    {
+        $this->applyCriteria();
+        $this->applyScope();
+
+        $results = $this->model->firstOrFail($columns);
+
+        $this->resetModel();
+
+        return $this->parserResult($results);
+    }
+
+    /**
+     * Where first
+     *
+     * @param array $where
+     * @param array $columns
+     * @return mixed
+     */
+    public function whereFirst(array $where, $columns = ['*'])
+    {
+        return $this->where($where)->firstOrFail($columns = ['*']);
+    }
+
 }
