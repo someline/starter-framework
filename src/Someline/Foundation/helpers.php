@@ -20,6 +20,9 @@ if (!function_exists('auth_user')) {
 
 if (!function_exists('smart_get_client_ip')) {
 
+    /**
+     * @return array|string
+     */
     function smart_get_client_ip()
     {
         $request = request();
@@ -28,6 +31,18 @@ if (!function_exists('smart_get_client_ip')) {
             $clientIp = $request->getClientIp(true);
         }
         return $clientIp;
+    }
+
+}
+
+if (!function_exists('app_timezone')) {
+
+    /**
+     * @return mixed
+     */
+    function app_timezone()
+    {
+        return \Config::get("app.timezone");
     }
 
 }

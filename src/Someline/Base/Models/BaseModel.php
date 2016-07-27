@@ -51,6 +51,22 @@ class BaseModel extends Model implements BaseModelEventsInterface
     }
 
     /**
+     * Get current auth user
+     *
+     * @return User|null
+     */
+    public function getAuthUser()
+    {
+        $user = null;
+        if ($this->api_auth()->check()) {
+            $user = $this->api_auth()->user();
+        } else if (\Auth::check()) {
+            $user = \Auth::user();
+        }
+        return $user;
+    }
+
+    /**
      * Get current auth user_id
      *
      * @return mixed|null
@@ -58,10 +74,9 @@ class BaseModel extends Model implements BaseModelEventsInterface
     public function getAuthUserId()
     {
         $user_id = null;
-        if ($this->api_auth()->check()) {
-            $user_id = $this->api_auth()->user()->user_id;
-        } else if (\Auth::check()) {
-            $user_id = \Auth::user()->user_id;
+        $user = $this->getAuthUser();
+        if ($user) {
+            $user_id = $user->user_id;
         }
         return $user_id;
     }
@@ -155,6 +170,34 @@ class BaseModel extends Model implements BaseModelEventsInterface
     {
         $this->setPresenter(new ModelFractalPresenter());
         return $this;
+    }
+
+    /**
+     * Return a timezone for all Datetime objects
+     *
+     * @return mixed
+     */
+    protected function getDateTimezone()
+    {
+        $user = $this->getAuthUser();
+        if ($user && !empty($user->timezone)) {
+            return $user->timezone;
+        } else {
+            return app_timezone();
+        }
+    }
+
+    /**
+     * Return a timestamp as DateTime object with timezone support.
+     *
+     * @param  mixed $value
+     * @return \Carbon\Carbon
+     */
+    protected function asDateTime($value)
+    {
+        $carbon = parent::asDateTime($value);
+        $carbon->setTimezone($this->getDateTimezone());
+        return $carbon;
     }
 
 }
