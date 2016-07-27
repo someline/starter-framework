@@ -161,6 +161,14 @@ class BaseModel extends Model implements BaseModelEventsInterface
     }
 
     /**
+     * @return Carbon
+     */
+    public function getNowAuthUserTime()
+    {
+        return Carbon::now($this->getAuthUserDateTimezone());
+    }
+
+    /**
      * @return User|null
      */
     public function getUser()
