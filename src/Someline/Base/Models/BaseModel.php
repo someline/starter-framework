@@ -31,14 +31,21 @@ class BaseModel extends Model implements BaseModelEventsInterface
      *
      * @var bool
      */
-    public $ips = true;
+    protected $ips = true;
 
     /**
      * Indicates if the model should be recorded users.
      *
      * @var bool
      */
-    public $update_users = true;
+    protected $update_users = true;
+
+    /**
+     * Indicates timestamp is always saved in UTC timezone
+     *
+     * @var bool
+     */
+    protected $timestamp_always_utc = true;
 
     /**
      * Get the auth instance.
@@ -197,6 +204,20 @@ class BaseModel extends Model implements BaseModelEventsInterface
     {
         $carbon = parent::asDateTime($value);
         $carbon->setTimezone($this->getDateTimezone());
+        return $carbon;
+    }
+
+    /**
+     * Get a fresh timestamp for the model.
+     *
+     * @return \Carbon\Carbon
+     */
+    public function freshTimestamp()
+    {
+        $carbon = parent::freshTimestamp();
+        if ($this->timestamp_always_utc) {
+            $carbon->setTimezone('UTC');
+        }
         return $carbon;
     }
 
