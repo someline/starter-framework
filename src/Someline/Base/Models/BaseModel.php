@@ -45,7 +45,14 @@ class BaseModel extends Model implements BaseModelEventsInterface
      *
      * @var bool
      */
-    protected $timestamp_always_utc = true;
+    protected $timestamp_always_save_in_utc = true;
+
+    /**
+     * Indicates timestamp is always get in user timezone
+     *
+     * @var bool
+     */
+    protected $timestamp_get_with_user_timezone = true;
 
     /**
      * Get the auth instance.
@@ -184,7 +191,7 @@ class BaseModel extends Model implements BaseModelEventsInterface
      *
      * @return mixed
      */
-    protected function getDateTimezone()
+    protected function getAuthUserDateTimezone()
     {
         $user = $this->getAuthUser();
         if ($user && !empty($user->timezone)) {
@@ -195,30 +202,37 @@ class BaseModel extends Model implements BaseModelEventsInterface
     }
 
     /**
-     * Return a timestamp as DateTime object with timezone support.
+     * Set a given attribute on the model.
      *
+     *
+     * @param  string $key
      * @param  mixed $value
-     * @return \Carbon\Carbon
+     * @return $this
      */
-    protected function asDateTime($value)
+    public function setAttribute($key, $value)
     {
-        $carbon = parent::asDateTime($value);
-        $carbon->setTimezone($this->getDateTimezone());
-        return $carbon;
+        if ($value instanceof Carbon && $this->timestamp_always_save_in_utc) {
+            $value->setTimezone('UTC');
+        }
+
+        return parent::setAttribute($key, $value);
     }
 
     /**
-     * Get a fresh timestamp for the model.
+     * Get a plain attribute (not a relationship).
      *
-     * @return \Carbon\Carbon
+     * @param  string $key
+     * @return mixed
      */
-    public function freshTimestamp()
+    public function getAttributeValue($key)
     {
-        $carbon = parent::freshTimestamp();
-        if ($this->timestamp_always_utc) {
-            $carbon->setTimezone('UTC');
+        $value = parent::getAttributeValue($key);
+
+        if ($value instanceof Carbon && $this->timestamp_get_with_user_timezone) {
+            $value->setTimezone($this->getAuthUserDateTimezone());
         }
-        return $carbon;
+
+        return $value;
     }
 
 }
