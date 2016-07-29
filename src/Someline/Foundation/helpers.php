@@ -35,6 +35,15 @@ if (!function_exists('smart_get_client_ip')) {
 
 }
 
+if (!function_exists('app_locale')) {
+
+    function app_locale()
+    {
+        return \App::getLocale();
+    }
+
+}
+
 if (!function_exists('app_timezone')) {
 
     /**
