@@ -3,7 +3,7 @@
 if (!function_exists('auth_user')) {
 
     /**
-     * @return \Someline\Models\Foundation\User
+     * @return \Someline\Model\Foundation\User
      * @throws \Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException
      */
     function auth_user()
