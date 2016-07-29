@@ -1,12 +1,11 @@
 <?php
 
-namespace Someline\Policies;
+namespace Someline\Base\Policies;
 
-use Illuminate\Auth\Access\HandlesAuthorization;
-use Someline\Model\BaseModel;
+use Someline\Base\Models\BaseModel;
 use Someline\Model\Foundation\User;
 
-abstract class BasePolicy
+abstract class Policy
 {
 
     /**
