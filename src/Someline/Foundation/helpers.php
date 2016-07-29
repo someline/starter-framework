@@ -10,7 +10,7 @@ if (!function_exists('auth_user')) {
     {
         $user = app('Dingo\Api\Auth\Auth')->user(false);
         $user = !empty($user) ? $user : \Auth::user();
-        if (!$user || !($user instanceof \Someline\Models\Foundation\User)) {
+        if (!$user || !($user instanceof \Someline\Model\Foundation\User)) {
             throw new \Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException();
         }
         return $user;
