@@ -2,6 +2,7 @@
 
 namespace Someline\Support\Middleware;
 
+use Carbon\Carbon;
 use Closure;
 use LaravelLocalization;
 use Mcamara\LaravelLocalization\LanguageNegotiator;
@@ -23,6 +24,9 @@ class LocaleMiddleware
 
         // set locale
         LaravelLocalization::setLocale($locale);
+
+        // set carbon locale
+        Carbon::setLocale($locale);
 
         return $next($request);
     }
