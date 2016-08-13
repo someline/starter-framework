@@ -20,10 +20,10 @@ if (!function_exists('current_auth_user')) {
 
 if (!function_exists('current_full_url')) {
 
-    function current_full_url()
+    function current_full_url($withQueryString = true)
     {
         $url = \Request::url();
-        $query = $_SERVER['QUERY_STRING'];
+        $query = $withQueryString ? $_SERVER['QUERY_STRING'] : null;
 
         if ($query) {
             $path = \Request::path();
@@ -33,6 +33,7 @@ if (!function_exists('current_full_url')) {
                 $query = substr($query, strlen($path));
             }
         }
+
         $url = $query ? $url . '?' . $query : $url;
         return $url;
     }
