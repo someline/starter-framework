@@ -43,7 +43,13 @@ class LocaleController extends Controller
 
         // store in session
         session(['someline-locale' => $locale]);
-        return redirect('/');
+
+        // check if has redirect url
+        $redirect_url = '/';
+        if ($request->has('redirect_url')) {
+            $redirect_url = $request->get('redirect_url');
+        }
+        return redirect($redirect_url);
     }
 
 }
