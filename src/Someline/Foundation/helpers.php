@@ -1,6 +1,6 @@
 <?php
 
-if (!function_exists('auth_user')) {
+if (!function_exists('current_auth_user')) {
 
     /**
      * @return \Someline\Model\Foundation\User
