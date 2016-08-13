@@ -6,7 +6,7 @@ if (!function_exists('auth_user')) {
      * @return \Someline\Model\Foundation\User
      * @throws \Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException
      */
-    function auth_user()
+    function current_auth_user()
     {
         $user = app('Dingo\Api\Auth\Auth')->user(false);
         $user = !empty($user) ? $user : \Auth::user();
@@ -86,7 +86,7 @@ if (!function_exists('refresh_jwt_token')) {
     {
         $jwt_token = null;
         if (\Auth::check()) {
-            $jwt_token = \JWTAuth::fromUser(auth_user());
+            $jwt_token = \JWTAuth::fromUser(current_auth_user());
             \Session::put('jwt_token', $jwt_token);
         }
         return $jwt_token;

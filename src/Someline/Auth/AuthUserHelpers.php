@@ -14,7 +14,7 @@ trait AuthUserHelpers
      */
     public function getAuthUser()
     {
-        return auth_user();
+        return current_auth_user();
     }
 
     /**

@@ -14,7 +14,7 @@ class AuthUserCriteria implements CriteriaInterface
 
     public function apply($model, RepositoryInterface $repository)
     {
-        $model = $model->where('user_id', '=', auth_user()->user_id);
+        $model = $model->where('user_id', '=', current_auth_user()->user_id);
         return $model;
     }
 

@@ -42,7 +42,7 @@ abstract class Repository extends BaseRepository implements RepositoryInterface
 
     public function authUserId()
     {
-        return auth_user()->user_id;
+        return current_auth_user()->user_id;
     }
 
     public function validateCreate(array $attributes)
