@@ -18,6 +18,27 @@ if (!function_exists('current_auth_user')) {
 
 }
 
+if (!function_exists('current_full_url')) {
+
+    function current_full_url()
+    {
+        $url = \Request::url();
+        $query = $_SERVER['QUERY_STRING'];
+
+        if ($query) {
+            $path = \Request::path();
+            if (starts_with($query, $path . '&')) {
+                $query = substr($query, strlen($path) + 1);
+            } else if (starts_with($query, $path)) {
+                $query = substr($query, strlen($path));
+            }
+        }
+        $url = $query ? $url . '?' . $query : $url;
+        return $url;
+    }
+
+}
+
 if (!function_exists('smart_get_client_ip')) {
 
     /**
