@@ -12,6 +12,8 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Foundation\Auth\Access\Authorizable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Passport\HasApiTokens;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 use Someline\Base\Models\BaseModel;
@@ -25,6 +27,7 @@ class User extends BaseModel implements BaseModelEventsInterface,
 {
     use Authenticatable, Authorizable, CanResetPassword;
     use TransformableTrait;
+    use HasApiTokens, Notifiable;
 
     /**
      * Indicates if the model should be auto set user_id.
