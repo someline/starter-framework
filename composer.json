@@ -24,7 +24,6 @@
     "doctrine/dbal": "~2.3",
     "itsgoingd/clockwork": "~1.10",
     "dingo/api": "1.0.x@dev",
-    "lucadegasperi/oauth2-server-laravel": "5.1.*",
     "guzzlehttp/guzzle": "~6.0",
     "lukasoppermann/http-status": "^2.0",
     "prettus/l5-repository": "^2.1",
