@@ -8,12 +8,14 @@ namespace Someline\Api\Middleware;
 
 use Closure;
 use Dingo\Api\Exception\ResourceException;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Exception\HttpResponseException;
 use League\OAuth2\Server\Exception\OAuthException;
 use Prettus\Validator\Exceptions\ValidatorException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
 class ApiAccessMiddleware
 {
@@ -42,6 +44,8 @@ class ApiAccessMiddleware
         } catch (HttpResponseException $e) {
             $message = env('API_DEBUG') ? $e->getMessage() : null;
             throw new HttpException($e->getResponse()->getStatusCode(), $message, $e);
+        } catch (AuthenticationException $e) {
+            throw new UnauthorizedHttpException(null);
         } catch (ValidatorException $e) {
             $messageBag = $e->getMessageBag();
             throw new ResourceException($messageBag->first(), $messageBag->all());
