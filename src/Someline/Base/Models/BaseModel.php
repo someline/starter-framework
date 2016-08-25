@@ -65,6 +65,16 @@ class BaseModel extends Model implements BaseModelEventsInterface
     }
 
     /**
+     * Get ID from the model primary key
+     *
+     * @return mixed
+     */
+    public function getIdAttribute()
+    {
+        return $this->getKey();
+    }
+
+    /**
      * Get current auth user
      *
      * @return User|null

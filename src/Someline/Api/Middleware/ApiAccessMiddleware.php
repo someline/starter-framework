@@ -45,7 +45,7 @@ class ApiAccessMiddleware
             $message = env('API_DEBUG') ? $e->getMessage() : null;
             throw new HttpException($e->getResponse()->getStatusCode(), $message, $e);
         } catch (AuthenticationException $e) {
-            throw new UnauthorizedHttpException(null);
+            throw new UnauthorizedHttpException(null, $e->getMessage(), $e);
         } catch (ValidatorException $e) {
             $messageBag = $e->getMessageBag();
             throw new ResourceException($messageBag->first(), $messageBag->all());
