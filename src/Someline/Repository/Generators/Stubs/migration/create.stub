@@ -14,7 +14,7 @@ class $CLASS$ extends Migration
 	public function up()
 	{
 		Schema::create('$TABLE$', function(Blueprint $table) {
-            $table->increments('$TABLE$_id');
+            $table->increments('$TABLE_SINGULAR$_id');
             $table->unsignedInteger('user_id')->index();
 
             // Adding more table related fields here...

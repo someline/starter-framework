@@ -15,7 +15,6 @@ class $CLASS$ extends BaseModel implements Transformable
     protected $fillable = $FILLABLE$;
 
     // Fields to be auto converted to Carbon object automatically
-    protected $dates = [
-    ];
+    protected $dates = [];
 
 }

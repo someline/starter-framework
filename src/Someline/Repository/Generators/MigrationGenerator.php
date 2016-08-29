@@ -148,6 +148,7 @@ class MigrationGenerator extends Generator
                 $file = 'create';
                 $replacements = [
                     'class'  => $this->getClass(),
+                    'table_singular'  => str_singular($parser->getTable()),
                     'table'  => $parser->getTable(),
                     'fields' => $this->getSchemaParser()->up(),
                 ];
