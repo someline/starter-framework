@@ -2,7 +2,7 @@
 
 $NAMESPACE$
 
-use Someline\Repositories\Interfaces\BaseRepositoryInterface;
+use $ROOT_NAMESPACE$\BaseRepositoryInterface;
 
 /**
  * Interface $CLASS$Repository

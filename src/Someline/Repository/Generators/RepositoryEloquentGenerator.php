@@ -74,6 +74,9 @@ class RepositoryEloquentGenerator extends Generator
             'fillable'      => $this->getFillable(),
             'use_validator' => $this->getValidatorUse(),
             'validator'     => $this->getValidatorMethod(),
+            'use_presenter' => $this->getPresenterUse(),
+            'root_namespace' => parent::getRootNamespace(),
+            'presenter'     => $this->getPresenterMethod(),
             'repository'    => $repository,
             'model'         => isset($this->options['model']) ? $this->options['model'] : ''
         ]);
@@ -145,4 +148,41 @@ class RepositoryEloquentGenerator extends Generator
         return '/**' . PHP_EOL . '    * Specify Validator class name' . PHP_EOL . '    *' . PHP_EOL . '    * @return mixed' . PHP_EOL . '    */' . PHP_EOL . '    public function validator()' . PHP_EOL . '    {' . PHP_EOL . PHP_EOL . '        return ' . $class . 'Validator::class;' . PHP_EOL . '    }' . PHP_EOL;
 
     }
+
+    public function getPresenterUse()
+    {
+        $presenter = $this->getPresenter();
+
+        return "use {$presenter};";
+    }
+
+    public function getPresenter()
+    {
+        $presenterGenerator = new PresenterGenerator([
+            'name'  => $this->name,
+            'rules' => $this->rules,
+            'force' => $this->force,
+        ]);
+
+        $presenter = $presenterGenerator->getRootNamespace() . '\\' . $presenterGenerator->getName();
+
+        return str_replace([
+            "\\",
+            '/'
+        ], '\\', $presenter) . 'Presenter';
+
+    }
+    
+    public function getPresenterMethod()
+    {
+        if ($this->presenter != 'yes') {
+            return '';
+        }
+
+        $class = $this->getClass();
+
+        return '/**' . PHP_EOL . '    * Specify Presenter class name' . PHP_EOL . '    *' . PHP_EOL . '    * @return mixed' . PHP_EOL . '    */' . PHP_EOL . '    public function presenter()' . PHP_EOL . '    {' . PHP_EOL . PHP_EOL . '        return ' . $class . 'Presenter::class;' . PHP_EOL . '    }' . PHP_EOL;
+
+    }
+    
 }
