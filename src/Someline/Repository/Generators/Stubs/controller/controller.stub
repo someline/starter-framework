@@ -64,7 +64,7 @@ class $CONTROLLER$Controller extends BaseController
 //        return $this->response->created(null);
 
         // B. return data
-        return $user;
+        return $$SINGULAR$;
 
     }
 
