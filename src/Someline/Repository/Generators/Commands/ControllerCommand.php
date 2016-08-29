@@ -42,11 +42,11 @@ class ControllerCommand extends Command
     {
         try {
             // Generate create request for controller
-            $this->call('starter:request', [
+            $this->call('make:request', [
                 'name' => $this->argument('name') . 'CreateRequest'
             ]);
             // Generate update request for controller
-            $this->call('starter:request', [
+            $this->call('make:request', [
                 'name' => $this->argument('name') . 'UpdateRequest'
             ]);
 

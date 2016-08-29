@@ -84,6 +84,7 @@ class RepositoryCommand extends Command
                 'name'      => $this->argument('name'),
                 'rules'     => $this->option('rules'),
                 'validator' => $this->option('validator'),
+                'presenter' => $this->option('presenter'),
                 'force'     => $this->option('force'),
                 'model'     => $model
             ]))->run();
@@ -141,6 +142,13 @@ class RepositoryCommand extends Command
                 null,
                 InputOption::VALUE_OPTIONAL,
                 'Adds validator reference to the repository.',
+                null
+            ],
+            [
+                'presenter',
+                null,
+                InputOption::VALUE_OPTIONAL,
+                'Adds presenter reference to the repository.',
                 null
             ],
             [

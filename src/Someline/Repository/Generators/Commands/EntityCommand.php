@@ -37,9 +37,14 @@ class EntityCommand extends Command
     public function fire()
     {
 
-        if ($this->confirm('Would you like to create a Presenter? [y|N]')) {
+        $presenter = $this->option('presenter');
+        if (is_null($presenter) && $this->confirm('Would you like to create a Presenter? [y|N]')) {
+            $presenter = 'yes';
+        }
+
+        if ($presenter == 'yes') {
             $this->call('starter:presenter', [
-                'name'    => $this->argument('name'),
+                'name' => $this->argument('name'),
                 '--force' => $this->option('force'),
             ]);
         }
@@ -51,7 +56,7 @@ class EntityCommand extends Command
 
         if ($validator == 'yes') {
             $this->call('starter:validator', [
-                'name'    => $this->argument('name'),
+                'name' => $this->argument('name'),
                 '--rules' => $this->option('rules'),
                 '--force' => $this->option('force'),
             ]);
@@ -61,21 +66,22 @@ class EntityCommand extends Command
 
             // Generate a controller resource
             $this->call('starter:resource', [
-                'name'    => $this->argument('name'),
+                'name' => $this->argument('name'),
                 '--force' => $this->option('force')
             ]);
         }
 
         $this->call('starter:repository', [
-            'name'        => $this->argument('name'),
-            '--fillable'  => $this->option('fillable'),
-            '--rules'     => $this->option('rules'),
+            'name' => $this->argument('name'),
+            '--fillable' => $this->option('fillable'),
+            '--rules' => $this->option('rules'),
             '--validator' => $validator,
-            '--force'     => $this->option('force')
+            '--presenter' => $presenter,
+            '--force' => $this->option('force')
         ]);
 
         $this->call('starter:bindings', [
-            'name'    => $this->argument('name'),
+            'name' => $this->argument('name'),
             '--force' => $this->option('force')
         ]);
     }
@@ -126,6 +132,13 @@ class EntityCommand extends Command
                 null,
                 InputOption::VALUE_OPTIONAL,
                 'Adds validator reference to the repository.',
+                null
+            ],
+            [
+                'presenter',
+                null,
+                InputOption::VALUE_OPTIONAL,
+                'Adds presenter reference to the repository.',
                 null
             ],
             [
