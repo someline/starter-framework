@@ -3,14 +3,13 @@
 $NAMESPACE$
 
 use $TRANSFORMER$;
-use Prettus\Repository\Presenter\FractalPresenter;
 
 /**
  * Class $CLASS$Presenter
  *
  * @package $NAMESPACE$
  */
-class $CLASS$Presenter extends FractalPresenter
+class $CLASS$Presenter extends BasePresenter
 {
     /**
      * Transformer

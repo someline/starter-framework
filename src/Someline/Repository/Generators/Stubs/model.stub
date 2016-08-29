@@ -2,14 +2,20 @@
 
 $NAMESPACE$
 
-use Illuminate\Database\Eloquent\Model;
+$USE_BASE_MODEL$
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
-class $CLASS$ extends Model implements Transformable
+class $CLASS$ extends BaseModel implements Transformable
 {
     use TransformableTrait;
 
+    protected $primaryKey = 'id';
+
     protected $fillable = $FILLABLE$;
+
+    // Fields to be auto converted to Carbon object automatically
+    protected $dates = [
+    ];
 
 }

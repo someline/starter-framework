@@ -2,18 +2,16 @@
 
 $NAMESPACE$
 
-use Illuminate\Http\Request;
-
-use $APPNAME$Http\Requests;
+use Dingo\Api\Exception\DeleteResourceFailedException;
+use Dingo\Api\Exception\StoreResourceFailedException;
+use Dingo\Api\Exception\UpdateResourceFailedException;
 use Prettus\Validator\Contracts\ValidatorInterface;
-use Prettus\Validator\Exceptions\ValidatorException;
 use $APPNAME$Http\Requests\$CLASS$CreateRequest;
 use $APPNAME$Http\Requests\$CLASS$UpdateRequest;
 $REPOSITORY$
 $VALIDATOR$
 
-
-class $CONTROLLER$Controller extends Controller
+class $CONTROLLER$Controller extends BaseController
 {
 
     /**
@@ -29,7 +27,7 @@ class $CONTROLLER$Controller extends Controller
     public function __construct($CLASS$Repository $repository, $CLASS$Validator $validator)
     {
         $this->repository = $repository;
-        $this->validator  = $validator;
+        $this->validator = $validator;
     }
 
 
@@ -40,17 +38,7 @@ class $CONTROLLER$Controller extends Controller
      */
     public function index()
     {
-        $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
-        $$PLURAL$ = $this->repository->all();
-
-        if (request()->wantsJson()) {
-
-            return response()->json([
-                'data' => $$PLURAL$,
-            ]);
-        }
-
-        return view('$PLURAL$.index', compact('$PLURAL$'));
+        return $this->repository->all();
     }
 
     /**
@@ -63,33 +51,21 @@ class $CONTROLLER$Controller extends Controller
     public function store($CLASS$CreateRequest $request)
     {
 
-        try {
+        $data = $request->all();
 
-            $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
+        $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_CREATE);
 
-            $$SINGULAR$ = $this->repository->create($request->all());
+        $$SINGULAR$ = $this->repository->create($data);
 
-            $response = [
-                'message' => '$CLASS$ created.',
-                'data'    => $$SINGULAR$->toArray(),
-            ];
+        // throw exception if store failed
+//        throw new StoreResourceFailedException('Failed to store.');
 
-            if ($request->wantsJson()) {
+        // A. return 201 created
+//        return $this->response->created(null);
 
-                return response()->json($response);
-            }
+        // B. return data
+        return $user;
 
-            return redirect()->back()->with('message', $response['message']);
-        } catch (ValidatorException $e) {
-            if ($request->wantsJson()) {
-                return response()->json([
-                    'error'   => true,
-                    'message' => $e->getMessageBag()
-                ]);
-            }
-
-            return redirect()->back()->withErrors($e->getMessageBag())->withInput();
-        }
     }
 
 
@@ -102,34 +78,8 @@ class $CONTROLLER$Controller extends Controller
      */
     public function show($id)
     {
-        $$SINGULAR$ = $this->repository->find($id);
-
-        if (request()->wantsJson()) {
-
-            return response()->json([
-                'data' => $$SINGULAR$,
-            ]);
-        }
-
-        return view('$PLURAL$.show', compact('$SINGULAR$'));
+        return $this->repository->find($id);
     }
-
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-
-        $$SINGULAR$ = $this->repository->find($id);
-
-        return view('$PLURAL$.edit', compact('$SINGULAR$'));
-    }
-
 
     /**
      * Update the specified resource in storage.
@@ -142,35 +92,18 @@ class $CONTROLLER$Controller extends Controller
     public function update($CLASS$UpdateRequest $request, $id)
     {
 
-        try {
+        $data = $request->all();
 
-            $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_UPDATE);
+        $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_UPDATE);
 
-            $$SINGULAR$ = $this->repository->update($id, $request->all());
+        $$SINGULAR$ = $this->repository->update($id, $data);
 
-            $response = [
-                'message' => '$CLASS$ updated.',
-                'data'    => $$SINGULAR$->toArray(),
-            ];
+        // throw exception if update failed
+//        throw new UpdateResourceFailedException('Failed to update.');
 
-            if ($request->wantsJson()) {
+        // Updated, return 204 No Content
+        return $this->response->noContent();
 
-                return response()->json($response);
-            }
-
-            return redirect()->back()->with('message', $response['message']);
-        } catch (ValidatorException $e) {
-
-            if ($request->wantsJson()) {
-
-                return response()->json([
-                    'error'   => true,
-                    'message' => $e->getMessageBag()
-                ]);
-            }
-
-            return redirect()->back()->withErrors($e->getMessageBag())->withInput();
-        }
     }
 
 
@@ -185,14 +118,12 @@ class $CONTROLLER$Controller extends Controller
     {
         $deleted = $this->repository->delete($id);
 
-        if (request()->wantsJson()) {
-
-            return response()->json([
-                'message' => '$CLASS$ deleted.',
-                'deleted' => $deleted,
-            ]);
+        if ($deleted) {
+            // Deleted, return 204 No Content
+            return $this->response->noContent();
+        } else {
+            // Failed, throw exception
+            throw new DeleteResourceFailedException('Failed to delete.');
         }
-
-        return redirect()->back()->with('message', '$CLASS$ deleted.');
     }
 }

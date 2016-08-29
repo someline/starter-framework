@@ -2,11 +2,11 @@
 
 $NAMESPACE$
 
-use Prettus\Repository\Eloquent\BaseRepository;
-use Prettus\Repository\Criteria\RequestCriteria;
+use Someline\Repositories\Criteria\RequestCriteria;
 use $REPOSITORY$
 use $MODEL$;
 $USE_VALIDATOR$
+$USE_PRESENTER$
 
 /**
  * Class $CLASS$RepositoryEloquent
@@ -25,6 +25,8 @@ class $CLASS$RepositoryEloquent extends BaseRepository implements $CLASS$Reposit
     }
 
     $VALIDATOR$
+
+    $PRESENTER$
 
     /**
      * Boot up the repository, pushing criteria
