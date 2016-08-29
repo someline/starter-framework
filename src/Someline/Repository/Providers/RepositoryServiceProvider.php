@@ -24,9 +24,9 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../../../resources/config/repository.php', 'repository');
+        $this->mergeConfigFrom(base_path('vendor/prettus/l5-repository/src/resources/config/repository.php'), 'repository');
 
-        $this->loadTranslationsFrom(__DIR__ . '/../../../resources/lang', 'repository');
+        $this->loadTranslationsFrom(base_path('vendor/prettus/l5-repository/src/resources/lang'), 'repository');
     }
 
 
