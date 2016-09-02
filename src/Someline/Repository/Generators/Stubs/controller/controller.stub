@@ -96,7 +96,7 @@ class $CONTROLLER$Controller extends BaseController
 
         $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_UPDATE);
 
-        $$SINGULAR$ = $this->repository->update($id, $data);
+        $$SINGULAR$ = $this->repository->update($data, $id);
 
         // throw exception if update failed
 //        throw new UpdateResourceFailedException('Failed to update.');
