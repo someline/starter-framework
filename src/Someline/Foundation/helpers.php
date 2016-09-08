@@ -156,3 +156,57 @@ if (!function_exists('is_jwt_token_valid_for_refresh')) {
     }
 
 }
+
+if (!function_exists('phone_parse')) {
+
+    /**
+     * @param string $phone_number
+     * @param string $country_code An ISO 3166-1 two letter country code
+     * @return null|\libphonenumber\PhoneNumber
+     */
+    function phone_parse($phone_number, $country_code)
+    {
+        $phoneUtil = \libphonenumber\PhoneNumberUtil::getInstance();
+        try {
+            $phoneNumberProto = $phoneUtil->parseAndKeepRawInput($phone_number, $country_code);
+            return $phoneNumberProto;
+        } catch (\libphonenumber\NumberParseException $e) {
+            return null;
+        }
+    }
+
+}
+
+if (!function_exists('phone_model_from')) {
+
+    /**
+     * @param string $phone_number
+     * @param string $country_code An ISO 3166-1 two letter country code
+     * @return \Someline\Model\Basic\PhoneNumberModel
+     */
+    function phone_model_from($phone_number, $country_code)
+    {
+        return new \Someline\Model\Basic\PhoneNumberModel($phone_number, $country_code);
+    }
+
+}
+
+if (!function_exists('ip_to_country_iso_code')) {
+
+    function ip_to_country_iso_code($ip = null, $default_iso_code = 'US')
+    {
+        if (empty($ip)) {
+            $ip = smart_get_client_ip();
+        }
+
+        $location = \GeoIP::getLocation($ip);
+
+        // check if NOT returned default
+        if ($location['default'] === false && !empty($location['isoCode'])) {
+            return $location['isoCode'];
+        } else {
+            return $default_iso_code;
+        }
+    }
+
+}
