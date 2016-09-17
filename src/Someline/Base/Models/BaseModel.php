@@ -231,10 +231,8 @@ class BaseModel extends Model implements BaseModelEventsInterface
     {
 
         if ($this->timestamp_always_save_in_utc) {
+            // set to UTC only if Carbon
             if ($value instanceof Carbon) {
-                $value->setTimezone('UTC');
-            } else if ($value && (in_array($key, $this->getDates()) || $this->isDateCastable($key))) {
-                $value = $this->fromDateTime($value);
                 $value->setTimezone('UTC');
             }
         }
