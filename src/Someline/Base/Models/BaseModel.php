@@ -229,12 +229,14 @@ class BaseModel extends Model implements BaseModelEventsInterface
      */
     public function setAttribute($key, $value)
     {
-        if ($value && (in_array($key, $this->getDates()) || $this->isDateCastable($key))) {
-            $value = $this->fromDateTime($value);
-        }
 
-        if ($value instanceof Carbon && $this->timestamp_always_save_in_utc) {
-            $value->setTimezone('UTC');
+        if ($this->timestamp_always_save_in_utc) {
+            if ($value instanceof Carbon) {
+                $value->setTimezone('UTC');
+            } else if ($value && (in_array($key, $this->getDates()) || $this->isDateCastable($key))) {
+                $value = $this->fromDateTime($value);
+                $value->setTimezone('UTC');
+            }
         }
 
         return parent::setAttribute($key, $value);
