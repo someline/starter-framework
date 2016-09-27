@@ -33,6 +33,7 @@
     "cviebrock/image-validator": "2.0.*@beta",
     "barryvdh/laravel-ide-helper": "^2.1",
     "someline/rest-api-client": "1.1.*",
+    "someline/someline-image": "^1.0",
     "mcamara/laravel-localization": "1.1.*",
     "laravel/passport": "^1.0",
     "monarobase/country-list": "^1.2",
