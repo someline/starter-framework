@@ -34,7 +34,7 @@
     "cviebrock/image-validator": "2.0.*@beta",
     "barryvdh/laravel-ide-helper": "^2.1",
     "tymon/jwt-auth": "0.5.*",
-    "someline/rest-api-client": "^1.0",
+    "someline/rest-api-client": "1.0.*",
     "mcamara/laravel-localization": "1.1.*"
   },
   "require-dev": {
