@@ -1,12 +1,12 @@
 {
-  "name": "someline/starter-framework",
+  "name": "lyfing/starter-framework",
   "type": "framework",
   "description": "The Someline Starter Framework.",
   "keywords": [
     "someline",
     "starter-framework"
   ],
-  "homepage": "https://github.com/someline/starter-framework",
+  "homepage": "https://github.com/lyfing/starter-framework",
   "license": "MIT",
   "authors": [
     {

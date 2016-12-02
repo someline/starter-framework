@@ -24,35 +24,35 @@ class BaseModel extends Model implements BaseModelEventsInterface
      *
      * @var bool
      */
-    protected $autoUserId = true;
+    protected $autoUserId = false;
 
     /**
      * Indicates if the model should be recorded ips.
      *
      * @var bool
      */
-    protected $ips = true;
+    protected $ips = false;
 
     /**
      * Indicates if the model should be recorded users.
      *
      * @var bool
      */
-    protected $update_users = true;
+    protected $update_users = false;
 
     /**
      * Indicates timestamp is always saved in UTC timezone
      *
      * @var bool
      */
-    protected $timestamp_always_save_in_utc = true;
+    protected $timestamp_always_save_in_utc = false;
 
     /**
      * Indicates timestamp is always get in user timezone
      *
      * @var bool
      */
-    protected $timestamp_get_with_user_timezone = true;
+    protected $timestamp_get_with_user_timezone = false;
 
     /**
      * Get the auth instance.
@@ -63,7 +63,7 @@ class BaseModel extends Model implements BaseModelEventsInterface
     {
         return app('Dingo\Api\Auth\Auth');
     }
-
+    
     /**
      * Get current auth user
      *
