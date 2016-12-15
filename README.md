@@ -1,28 +1,5 @@
-# Someline Starter Framework (Kernel)
-
-[![Latest Version on Packagist][ico-version]][link-packagist]
-[![Software License][ico-license]](LICENSE.md)
-[![Total Downloads][ico-downloads]][link-downloads]
-
-The [Someline Starter](https://starter.someline.com/) Framework.
-
-## Change log
-
-Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
-
-## Contributing
-
-Please see [CONTRIBUTING](CONTRIBUTING.md) and [CONDUCT](CONDUCT.md) for details.
-
-## Security
-
-If you discover any security related issues, please email libernlin@gmail.com instead of using the issue tracker.
-
-## Credits
-
-- [Libern Lin][link-author]
-- [All Contributors][link-contributors]
-
+# Fork Someline Starter Framework (Kernel)
+change `users->user_id` to `users->id`
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
