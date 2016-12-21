@@ -1,21 +1,15 @@
 {
-  "name": "someline/starter-framework",
-  "type": "framework",
-  "description": "The Someline Starter Framework.",
-  "keywords": [
-    "someline",
-    "starter-framework"
-  ],
-  "homepage": "https://github.com/someline/starter-framework",
+  "name": "lyfing/starter",
+  "description": "fork by someline starter",
   "license": "MIT",
   "authors": [
     {
-      "name": "Libern Lin",
-      "email": "libernlin@gmail.com",
-      "homepage": "https://www.someline.com/",
-      "role": "Developer"
+      "name": "lyfing",
+      "email": "os.debian.ly@gmail.com"
     }
   ],
+  "homepage": "https://github.com/lyfing/starter-framework",
+
   "require": {
     "php": ">=5.5.9",
     "ext-pdo_sqlite": "*",
@@ -48,20 +42,14 @@
   },
   "autoload": {
     "files": [
-      "src/Someline/Foundation/helpers.php"
+      "src/Foundation/helpers.php"
     ],
     "psr-4": {
-      "Someline\\": "src/Someline"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Someline\\Test\\": "tests"
+      "Starter\\": "src/"
     }
   },
   "scripts": {
-    "test": "phpunit",
-    "format": "phpcbf --standard=psr2 src/"
+    "test": "phpunit"
   },
   "extra": {
     "branch-alias": {
