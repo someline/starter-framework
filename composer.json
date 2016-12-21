@@ -1,19 +1,15 @@
 {
-  "name": "lyfing/starter-framework",
-  "type": "framework",
-  "description": "Modify  Starter Framework.",
-  "keywords": [
-  ],
-  "homepage": "https://github.com/lyfing/starter-framework",
+  "name": "lyfing/starter",
+  "description": "fork by someline starter",
   "license": "MIT",
   "authors": [
     {
-      "name": "Lyfing",
-      "email": "os.debian.ly@gmail.com",
-      "homepage": "https://github.com/osdebianly/starter-framework",
-      "role": "Developer"
+      "name": "lyfing",
+      "email": "os.debian.ly@gmail.com"
     }
   ],
+  "homepage": "https://github.com/lyfing/starter-framework",
+
   "require": {
     "php": ">=5.5.9",
     "ext-pdo_sqlite": "*",
@@ -46,20 +42,14 @@
   },
   "autoload": {
     "files": [
-      "src/Lyfing/Foundation/helpers.php"
+      "src/Foundation/helpers.php"
     ],
     "psr-4": {
-      "Lyfing\\": "src/Lyfing"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Lyfing\\Test\\": "tests"
+      "Starter\\": "src/"
     }
   },
   "scripts": {
-    "test": "phpunit",
-    "format": "phpcbf --standard=psr2 src/"
+    "test": "phpunit"
   },
   "extra": {
     "branch-alias": {
