@@ -1,11 +1,16 @@
 # Someline Starter Framework (Kernel)
-# 根据需求自定义一下
+# It is a fork from The [Someline Starter](https://starter.someline.com/) Framework package,
+
+I made some changes
+* Fix can't get  id attribute
+* User model use id  as primary key 
+
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
 [![Total Downloads][ico-downloads]][link-downloads]
 
-The [Someline Starter](https://starter.someline.com/) Framework.
+
 
 ## Change log
 

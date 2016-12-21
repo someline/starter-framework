@@ -1,18 +1,16 @@
 {
   "name": "lyfing/starter-framework",
   "type": "framework",
-  "description": "The Someline Starter Framework.",
+  "description": "Modify  Starter Framework.",
   "keywords": [
-    "someline",
-    "starter-framework"
   ],
   "homepage": "https://github.com/lyfing/starter-framework",
   "license": "MIT",
   "authors": [
     {
-      "name": "Libern Lin",
-      "email": "libernlin@gmail.com",
-      "homepage": "https://www.someline.com/",
+      "name": "Lyfing",
+      "email": "os.debian.ly@gmail.com",
+      "homepage": "https://github.com/osdebianly/starter-framework",
       "role": "Developer"
     }
   ],
@@ -48,15 +46,15 @@
   },
   "autoload": {
     "files": [
-      "src/Someline/Foundation/helpers.php"
+      "src/Lyfing/Foundation/helpers.php"
     ],
     "psr-4": {
-      "Someline\\": "src/Someline"
+      "Lyfing\\": "src/Lyfing"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Someline\\Test\\": "tests"
+      "Lyfing\\Test\\": "tests"
     }
   },
   "scripts": {
