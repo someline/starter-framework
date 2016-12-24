@@ -23,7 +23,7 @@ if (!function_exists('current_full_url')) {
     function current_full_url($withQueryString = true)
     {
         $url = \Request::url();
-        $query = $withQueryString ? $_SERVER['QUERY_STRING'] : null;
+        $query = $withQueryString ? (isset($_SERVER['QUERY_STRING']) ? $_SERVER['QUERY_STRING'] : null) : null;
 
         if ($query) {
             $path = \Request::path();
