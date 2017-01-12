@@ -209,7 +209,7 @@ class BaseModel extends Model implements BaseModelEventsInterface
      *
      * @return mixed
      */
-    protected function getAuthUserDateTimezone()
+    public function getAuthUserDateTimezone()
     {
         $user = $this->getAuthUser();
         if ($user && !empty($user->timezone)) {
