@@ -34,7 +34,7 @@
     "barryvdh/laravel-ide-helper": "^2.2",
     "someline/rest-api-client": "1.1.*",
     "someline/someline-image": "^1.0",
-    "mcamara/laravel-localization": "1.1.*",
+    "mcamara/laravel-localization": "1.2.*",
     "laravel/passport": "^2.0",
     "monarobase/country-list": "^1.2",
     "libern/timezone": "^1.0",
