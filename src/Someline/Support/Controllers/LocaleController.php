@@ -19,7 +19,7 @@ class LocaleController extends Controller
      */
     public function getLocaleJs(Request $request, $locale)
     {
-        $content = 'window.Someline.locales = ' . json_encode(trans('app', [], 'messages', $locale));
+        $content = 'window.Someline.locales = ' . json_encode(trans('app', [], $locale));
         $response = response()->make($content);
         $response->header('Content-Type', 'application/javascript');
         $response->setPublic()
