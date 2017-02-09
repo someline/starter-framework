@@ -30,7 +30,7 @@
     "prettus/laravel-validation": "1.1.*",
     "intervention/image": "^2.3",
     "intervention/imagecache": "^2.3",
-    "cviebrock/image-validator": "^2.1",
+    "cviebrock/image-validator": "^2.2",
     "barryvdh/laravel-ide-helper": "^2.2",
     "someline/rest-api-client": "1.1.*",
     "someline/someline-image": "^1.0",
