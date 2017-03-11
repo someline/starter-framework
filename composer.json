@@ -36,7 +36,7 @@
     "someline/someline-image": "2.0.*",
     "mcamara/laravel-localization": "1.2.*",
     "laravel/passport": "^2.0",
-    "monarobase/country-list": "^1.2",
+    "monarobase/country-list": "^2.0",
     "libern/timezone": "^1.0",
     "giggsey/libphonenumber-for-php": "~8.0",
     "torann/geoip": "1.0.*"
