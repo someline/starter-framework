@@ -210,3 +210,31 @@ if (!function_exists('ip_to_country_iso_code')) {
     }
 
 }
+
+if (!function_exists('collection_paginate')) {
+
+    /**
+     * @param \Illuminate\Support\Collection $collection
+     * @param $perPage
+     * @param string $pageName
+     * @param null $page
+     * @return \Illuminate\Pagination\LengthAwarePaginator
+     */
+    function collection_paginate(\Illuminate\Support\Collection $collection, $perPage, $pageName = 'page', $page = null)
+    {
+        $page = $page ?: \Illuminate\Pagination\Paginator::resolveCurrentPage($pageName);
+
+        $results = $collection->forPage($page, $perPage);
+
+        parse_str(request()->getQueryString(), $query);
+        unset($query[$pageName]);
+
+        return new \Illuminate\Pagination\LengthAwarePaginator($results, $collection->count(), $perPage, $page, [
+                'pageName' => $pageName,
+                'path' => \Illuminate\Pagination\LengthAwarePaginator::resolveCurrentPath(),
+                'query' => $query,
+            ]
+        );
+    }
+
+}
