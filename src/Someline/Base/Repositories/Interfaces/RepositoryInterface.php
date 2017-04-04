@@ -94,4 +94,13 @@ interface RepositoryInterface extends BaseRepositoryInterface
      */
     public function whereFirst(array $where, $columns = ['*']);
 
+    /**
+     * Wrapper result data
+     *
+     * @param mixed $result
+     *
+     * @return mixed
+     */
+    public function parserResult($result);
+
 }
