@@ -257,4 +257,18 @@ class BaseModel extends Model implements BaseModelEventsInterface
         return $value;
     }
 
+    /**
+     * Prepare a date for array / JSON serialization.
+     *
+     * @param  \DateTimeInterface $date
+     * @return string
+     */
+    protected function serializeDate(\DateTimeInterface $date)
+    {
+        if ($date instanceof Carbon && $this->timestamp_get_with_user_timezone) {
+            $date->setTimezone($this->getAuthUserDateTimezone());
+        }
+        return $date->format($this->getDateFormat());
+    }
+
 }
