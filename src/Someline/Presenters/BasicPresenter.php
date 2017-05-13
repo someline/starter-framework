@@ -11,6 +11,20 @@ use Someline\Transformers\BasicTransformer;
  */
 class BasicPresenter extends BasePresenter
 {
+
+    /**
+     * @var string
+     */
+    protected $transformer = null;
+
+    /**
+     * @param string $transformer
+     */
+    public function setTransformer(string $transformer)
+    {
+        $this->transformer = $transformer;
+    }
+
     /**
      * Transformer
      *
@@ -18,6 +32,11 @@ class BasicPresenter extends BasePresenter
      */
     public function getTransformer()
     {
-        return new BasicTransformer();
+        if ($this->transformer) {
+            return new $this->transformer();
+        } else {
+            return new BasicTransformer();
+        }
     }
+
 }
