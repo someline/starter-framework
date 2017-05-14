@@ -245,4 +245,16 @@ abstract class Repository extends BaseRepository implements RepositoryInterface
         return $this->where($where)->firstOrFail($columns = ['*']);
     }
 
+    /**
+     * Use Model for custom usages
+     *
+     * @param callable $callback
+     * @return $this
+     */
+    public function useModel(callable $callback)
+    {
+        $this->model = $callback($this->model);
+        return $this;
+    }
+
 }
