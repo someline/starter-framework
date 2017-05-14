@@ -103,4 +103,12 @@ interface RepositoryInterface extends BaseRepositoryInterface
      */
     public function parserResult($result);
 
+    /**
+     * Use Model for custom usages
+     *
+     * @param callable $callback
+     * @return $this
+     */
+    public function useModel(callable $callback);
+
 }
