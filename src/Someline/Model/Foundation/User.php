@@ -29,6 +29,8 @@ class User extends BaseModel implements BaseModelEventsInterface,
     use TransformableTrait;
     use HasApiTokens, Notifiable;
 
+    const MORPH_NAME = 'User';
+
     /**
      * Indicates if the model should be auto set user_id.
      *
