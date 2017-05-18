@@ -3,17 +3,32 @@
 if (!function_exists('current_auth_user')) {
 
     /**
+     * @param bool $throwException
      * @return \Someline\Model\Foundation\User
      * @throws \Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException
      */
-    function current_auth_user()
+    function current_auth_user($throwException = true)
     {
         $user = app('Dingo\Api\Auth\Auth')->user(false);
         $user = !empty($user) ? $user : \Auth::user();
         if (!$user || !($user instanceof \Someline\Model\Foundation\User)) {
-            throw new \Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException();
+            if ($throwException) {
+                throw new \Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException();
+            }
         }
         return $user;
+    }
+
+}
+
+if (!function_exists('auth_check')) {
+
+    /**
+     * @return boolean
+     */
+    function auth_check()
+    {
+        return \Auth::check();
     }
 
 }
