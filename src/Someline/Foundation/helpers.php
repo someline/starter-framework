@@ -217,7 +217,9 @@ if (!function_exists('ip_to_country_iso_code')) {
         $location = \GeoIP::getLocation($ip);
 
         // check if NOT returned default
-        if ($location['default'] === false && !empty($location['isoCode'])) {
+        if ($location['default'] === false && !empty($location['iso_code'])) {
+            return $location['iso_code'];
+        } else if ($location['default'] === false && !empty($location['isoCode'])) {
             return $location['isoCode'];
         } else {
             return $default_iso_code;
