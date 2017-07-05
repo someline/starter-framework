@@ -35,7 +35,7 @@
     "someline/rest-api-client": "1.1.*",
     "someline/someline-image": "2.0.*",
     "mcamara/laravel-localization": "1.2.*",
-    "laravel/passport": "^2.0",
+    "laravel/passport": "^3.0",
     "monarobase/country-list": "^2.0",
     "libern/timezone": "^1.0",
     "giggsey/libphonenumber-for-php": "~8.0",
