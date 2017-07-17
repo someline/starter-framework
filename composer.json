@@ -33,7 +33,7 @@
     "cviebrock/image-validator": "^2.2",
     "barryvdh/laravel-ide-helper": "^2.2",
     "someline/rest-api-client": "1.1.*",
-    "someline/someline-image": "2.0.*",
+    "someline/someline-image": "2.1.*",
     "mcamara/laravel-localization": "1.2.*",
     "laravel/passport": "^3.0",
     "monarobase/country-list": "^2.0",
