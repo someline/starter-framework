@@ -3,6 +3,7 @@
  * Created for someline-starter.
  * User: Libern
  */
+
 namespace Someline\Repositories\Criteria;
 
 
@@ -59,6 +60,13 @@ class RequestCriteria extends \Prettus\Repository\Criteria\RequestCriteria
                         if ($condition == "like_raw") {
                             $condition = "like";
                             $value = $searchData[$field];
+                        } else if ($condition == "like_safe") {
+                            $condition = "like";
+                            if (str_contains_ascii_only($searchData[$field])) {
+                                $value = "%{$searchData[$field]}%";
+                            } else {
+                                $value = null;
+                            }
                         } else {
                             $value = ($condition == "like" || $condition == "ilike") ? "%{$searchData[$field]}%" : $searchData[$field];
                         }
@@ -67,6 +75,13 @@ class RequestCriteria extends \Prettus\Repository\Criteria\RequestCriteria
                             if ($condition == "like_raw") {
                                 $condition = "like";
                                 $value = $searchData[$field];
+                            } else if ($condition == "like_safe") {
+                                $condition = "like";
+                                if (str_contains_ascii_only($search)) {
+                                    $value = "%{$search}%";
+                                } else {
+                                    $value = null;
+                                }
                             } else {
                                 $value = ($condition == "like" || $condition == "ilike") ? "%{$search}%" : $search;
                             }
