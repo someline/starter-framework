@@ -255,3 +255,12 @@ if (!function_exists('collection_paginate')) {
     }
 
 }
+
+if (!function_exists('str_contains_ascii_only')) {
+
+    function str_contains_ascii_only($string)
+    {
+        return (preg_match('%^[ -~]+$%', $string, $m));
+    }
+
+}
