@@ -264,3 +264,12 @@ if (!function_exists('str_contains_ascii_only')) {
     }
 
 }
+
+if (!function_exists('in_arrayi')) {
+
+    function in_arrayi($needle, $haystack)
+    {
+        return in_array(strtolower($needle), array_map('strtolower', $haystack));
+    }
+
+}
