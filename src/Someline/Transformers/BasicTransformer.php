@@ -20,6 +20,9 @@ class BasicTransformer extends Transformer
      */
     public function transform($value)
     {
+        if ($value instanceof \Illuminate\Database\Eloquent\Model) {
+            $value = $value->toArray();
+        }
         return $value;
     }
     
