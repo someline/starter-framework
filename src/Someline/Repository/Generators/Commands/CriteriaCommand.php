@@ -8,7 +8,7 @@ use Someline\Repository\Generators\FileAlreadyExistsException;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
-class CriteriaCommand extends Command
+class CriteriaCommand extends CommandBase
 {
     /**
      * The name of command.
