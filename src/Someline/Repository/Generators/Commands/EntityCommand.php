@@ -6,7 +6,7 @@ use Illuminate\Support\Collection;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
-class EntityCommand extends Command
+class EntityCommand extends CommandBase
 {
 
     /**

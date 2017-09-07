@@ -11,7 +11,7 @@ use Someline\Repository\Generators\RepositoryInterfaceGenerator;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
-class RepositoryCommand extends Command
+class RepositoryCommand extends CommandBase
 {
 
     /**

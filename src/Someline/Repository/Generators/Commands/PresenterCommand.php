@@ -8,7 +8,7 @@ use Someline\Repository\Generators\TransformerGenerator;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
-class PresenterCommand extends Command
+class PresenterCommand extends CommandBase
 {
 
     /**

@@ -8,7 +8,7 @@ use Someline\Repository\Generators\FileAlreadyExistsException;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
-class ControllerCommand extends Command
+class ControllerCommand extends CommandBase
 {
 
     /**
