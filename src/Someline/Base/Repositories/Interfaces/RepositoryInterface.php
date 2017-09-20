@@ -111,4 +111,11 @@ interface RepositoryInterface extends BaseRepositoryInterface
      */
     public function useModel(callable $callback);
 
+    /**
+     * Remove all or passed registered global scopes.
+     *
+     * @param  array|null  $scopes
+     * @return $this
+     */
+    public function withoutGlobalScopes(array $scopes = null);
 }
