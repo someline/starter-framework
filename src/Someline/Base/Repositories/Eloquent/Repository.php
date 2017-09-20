@@ -257,4 +257,16 @@ abstract class Repository extends BaseRepository implements RepositoryInterface
         return $this;
     }
 
+    /**
+     * Remove all or passed registered global scopes.
+     *
+     * @param  array|null  $scopes
+     * @return $this
+     */
+    public function withoutGlobalScopes(array $scopes = null)
+    {
+        $this->model = $this->model->withoutGlobalScopes($scopes);
+        return $this;
+    }
+
 }
