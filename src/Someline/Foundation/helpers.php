@@ -273,3 +273,30 @@ if (!function_exists('in_arrayi')) {
     }
 
 }
+
+if (!function_exists('str_random_except')) {
+
+    /**
+     * Generate a more truly "random" alpha-numeric string.
+     *
+     * @param  int $length
+     * @param array $excludes
+     * @return string
+     */
+    function str_random_except($length = 16, $excludes = [])
+    {
+        $string = '';
+        $excludes = array_merge(['/', '+', '='], $excludes);
+
+        while (($len = strlen($string)) < $length) {
+            $size = $length - $len;
+
+            $bytes = random_bytes($size);
+
+            $string .= substr(str_ireplace($excludes, '', base64_encode($bytes)), 0, $size);
+        }
+
+        return $string;
+    }
+
+}
