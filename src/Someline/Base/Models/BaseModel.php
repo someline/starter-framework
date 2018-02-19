@@ -165,6 +165,14 @@ class BaseModel extends Model implements BaseModelEventsInterface
     /**
      * @return Carbon
      */
+    public function getNowTime()
+    {
+        return Carbon::now(app_timezone());
+    }
+
+    /**
+     * @return Carbon
+     */
     public function getNowUTCTime()
     {
         return Carbon::now('UTC');
