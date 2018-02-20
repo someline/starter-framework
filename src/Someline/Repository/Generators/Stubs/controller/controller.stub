@@ -5,6 +5,7 @@ $NAMESPACE$
 use Dingo\Api\Exception\DeleteResourceFailedException;
 use Dingo\Api\Exception\StoreResourceFailedException;
 use Dingo\Api\Exception\UpdateResourceFailedException;
+use Illuminate\Http\Request;
 use Prettus\Validator\Contracts\ValidatorInterface;
 use $APPNAME$Http\Requests\$CLASS$CreateRequest;
 use $APPNAME$Http\Requests\$CLASS$UpdateRequest;
@@ -30,13 +31,24 @@ class $CONTROLLER$Controller extends BaseController
         $this->validator = $validator;
     }
 
-
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
+    {
+        return $this->repository->paginate();
+    }
+
+    /**
+     * Display all resources.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function all(Request $request)
     {
         return $this->repository->all();
     }
