@@ -205,6 +205,7 @@ class BaseModel extends Model implements BaseModelEventsInterface
     /**
      * Set Model Presenter
      * @return $this
+     * @throws \Exception
      */
     public function setModelPresenter()
     {
@@ -278,5 +279,22 @@ class BaseModel extends Model implements BaseModelEventsInterface
         }
         return $date->format($this->getDateFormat());
     }
+
+    /**
+     * @return mixed|Carbon
+     */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+
+    /**
+     * @return mixed|Carbon
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updated_at;
+    }
+
 
 }
