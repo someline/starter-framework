@@ -591,6 +591,7 @@ class CountryModel
                 $country_info['country_code'] = $country_iso_code;
                 $country_info['name'] = $country_list_en[$country_iso_code];
                 $country_info['locale_name'] = $country_list_locale[$country_iso_code];
+                $country_info['combined_name'] = $country_info['country_code'] . ' ' . $country_info['name'];
                 $country_info['calling_code'] = $countryCallingCodeList[$country_iso_code];
                 $country_info_list[] = $country_info;
             }
@@ -615,6 +616,7 @@ class CountryModel
                 $country_info['country_code'] = $country_iso_code;
                 $country_info['name'] = $country_list_en[$country_iso_code];
                 $country_info['locale_name'] = $country_list_locale[$country_iso_code];
+                $country_info['combined_name'] = $country_info['country_code'] . ' ' . $country_info['name'];
                 $country_info['calling_code'] = $countryCallingCodeList[$country_iso_code];
                 $country_info_list[$country_iso_code] = $country_info;
             }
