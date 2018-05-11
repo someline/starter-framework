@@ -65,14 +65,16 @@ class BaseModel extends Model implements BaseModelEventsInterface
     }
 
     /**
+     * @depreceted Not Safe to use.
+     *
      * Get ID from the model primary key
      *
      * @return mixed
      */
-    public function getIdAttribute()
-    {
-        return $this->getKey();
-    }
+//    public function getIdAttribute()
+//    {
+//        return $this->getKey();
+//    }
 
     /**
      * Get current auth user
