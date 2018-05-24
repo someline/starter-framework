@@ -33,7 +33,7 @@
     "intervention/imagecache": "^2.3",
     "barryvdh/laravel-ide-helper": "^2.4",
     "someline/rest-api-client": "1.2.*",
-    "someline/someline-image": "2.2.*",
+    "someline/someline-image": "2.3.*",
     "mcamara/laravel-localization": "1.3.*",
     "laravel/passport": "^6.0",
     "monarobase/country-list": "^2.1",
