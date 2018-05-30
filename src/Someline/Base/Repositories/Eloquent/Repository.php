@@ -15,6 +15,7 @@ use Prettus\Validator\Contracts\ValidatorInterface;
 use Someline\Base\Presenters\Presenter;
 use Someline\Base\Repositories\Interfaces\RepositoryInterface;
 use Someline\Repositories\Criteria\AuthUserCriteria;
+use Someline\Repositories\Criteria\OwnerUsersCriteria;
 
 abstract class Repository extends BaseRepository implements RepositoryInterface
 {
@@ -37,6 +38,12 @@ abstract class Repository extends BaseRepository implements RepositoryInterface
     public function byAuthUser()
     {
         $this->pushCriteria(new AuthUserCriteria());
+        return $this;
+    }
+
+    public function byUsers($userIds)
+    {
+        $this->pushCriteria(new OwnerUsersCriteria($userIds));
         return $this;
     }
 

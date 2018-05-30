@@ -18,6 +18,12 @@ interface RepositoryInterface extends BaseRepositoryInterface
     public function byAuthUser();
 
     /**
+     * @param $userIds
+     * @return $this
+     */
+    public function byUsers($userIds);
+
+    /**
      * @return mixed
      */
     public function authUserId();
