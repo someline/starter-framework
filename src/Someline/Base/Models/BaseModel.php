@@ -71,7 +71,7 @@ class BaseModel extends Model implements BaseModelEventsInterface
      */
     public function getIdAttribute()
     {
-        return $this->getKey();
+        return $this->getAttributeFromArray($this->getKeyName());
     }
 
     /**
