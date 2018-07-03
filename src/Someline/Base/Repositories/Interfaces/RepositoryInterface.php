@@ -124,4 +124,10 @@ interface RepositoryInterface extends BaseRepositoryInterface
      * @return $this
      */
     public function withoutGlobalScopes(array $scopes = null);
+
+    /**
+     * Pre Apply Criteria for usage
+     */
+    public function preApplyCriteria();
+
 }

@@ -276,4 +276,13 @@ abstract class Repository extends BaseRepository implements RepositoryInterface
         return $this;
     }
 
+    /**
+     * Pre Apply Criteria for usage
+     */
+    public function preApplyCriteria()
+    {
+        $this->applyCriteria();
+        $this->skipCriteria(true);
+    }
+
 }
