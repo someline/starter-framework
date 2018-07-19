@@ -172,6 +172,7 @@ class RequestCriteria extends \Prettus\Repository\Criteria\RequestCriteria
                     $model = $model
                         ->leftJoin($sortTable, $keyName, '=', $sortTable . '.' . $sortTableKeyName)
                         ->orderBy($sortColumn, $sortedBy)
+                        ->groupBy($keyName) // Prevent SQL Error: SELECT list is not in GROUP BY clause and contains nonaggregated column 'xxx' which is not functionally dependent on columns in GROUP BY clause;
                         ->addSelect($table . '.*');
                 } else {
                     $model = $model->orderBy($orderBy, $sortedBy);
