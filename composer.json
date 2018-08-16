@@ -24,7 +24,7 @@
     "laravel/tinker": "~1.0",
     "predis/predis": "~1.1",
     "doctrine/dbal": "~2.7",
-    "itsgoingd/clockwork": "~2.2",
+    "itsgoingd/clockwork": "~3.0",
     "guzzlehttp/guzzle": "~6.3",
     "lukasoppermann/http-status": "^2.0",
     "prettus/l5-repository": "^2.6",
