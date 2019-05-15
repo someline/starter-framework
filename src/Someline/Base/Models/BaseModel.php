@@ -136,6 +136,21 @@ class BaseModel extends Model implements BaseModelEventsInterface
     }
 
     /**
+     * check the $user_id is valid.
+     *
+     * @param  int|string $user_id
+     * @return bool
+     */
+    protected function validUserId($user_id): bool
+    {
+        if ('int' === $this->keyType)
+            return $user_id > 0;
+
+        if ('string' === $this->keyType)
+            return strlen($user_id) > 0;
+    }
+
+    /**
      * Update the creation and update by users.
      *
      * @return void
@@ -143,7 +158,7 @@ class BaseModel extends Model implements BaseModelEventsInterface
     protected function updateUsers()
     {
         $user_id = $this->getAuthUserId();
-        if (!($user_id > 0)) {
+        if (!$this->validUserId($user_id)) {
             return;
         }
 
@@ -159,7 +174,7 @@ class BaseModel extends Model implements BaseModelEventsInterface
     /**
      * @return bool
      */
-    public function isAuthUserOwner()
+    public function isAuthUserOwner(): bool
     {
         return $this->getAuthUserId() == $this->getUserId();
     }
