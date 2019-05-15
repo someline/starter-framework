@@ -72,6 +72,9 @@ class MigrationGenerator extends Generator
      */
     public function getMigrationName()
     {
+        $this->name = str_replace('/', '', $this->name);
+        $this->name = str_replace('\\', '', $this->name);
+
         return strtolower($this->name);
     }
 
