@@ -45,4 +45,34 @@ class User extends BaseModel implements BaseModelEventsInterface,
      */
     protected $primaryKey = 'user_id';
 
+    /**
+     * find users in any field, such as user e-mail or phone number.
+     *
+     * If you use Passport, you may need to rewrite the method.
+     *
+     * @param  string $username
+     * @return mixed
+     *
+     * @see    \Laravel\Passport\Bridge\UserRepository@getUserEntityByUserCredentials
+     * @see    https://segmentfault.com/a/1190000010499813#articleHeader0
+     * @see    https://blog.csdn.net/woqianduo/article/details/81782799
+     * @see    https://www.jianshu.com/p/12d06fc201af
+     */
+    public function findForPassport(string $username)
+    {
+        return $this->orWhere('email', $username)
+//            ->orWhere('mobile', $username)
+//            ->orWhere('more_field', $username)
+            ->first();
+    }
+
+    /**
+     * get which field is the password.
+     * @return string
+     */
+    public function getAuthPassword(): string
+    {
+        return $this->password;
+    }
+
 }
