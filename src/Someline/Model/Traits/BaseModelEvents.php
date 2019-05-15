@@ -38,6 +38,17 @@ trait BaseModelEvents
     public function onCreating()
     {
 
+        /*
+         * check whether the UUID primary key is used.
+         *
+         * if the $primaryKey value is string(single key), not an array(union key),
+         * and $incrementing is false, $keytype is string,
+         * automatically use UUID as $primaryKey if the $primaryKey is empty.
+         */
+        $keyIsEmpty = is_string($this->primaryKey) && empty(array_get($this->attributes, $this->primaryKey));
+        if ($keyIsEmpty && false === $this->incrementing && 'string' === $this->keyType)
+            $this->attributes[$this->primaryKey] = $this->uuid();
+
         // auto set user id
         if ($this->autoUserId && empty($this->user_id)) {
             $user_id = $this->getAuthUserId();
@@ -108,6 +119,20 @@ trait BaseModelEvents
 
         if ('string' === $this->keyType)
             return strlen($user_id) > 0;
+    }
+
+    /**
+     * generate a uuid string.
+     *
+     * @param  bool $use32bytes
+     * @return string the uuid string
+     */
+    protected function uuid(bool $use32bytes = false): string
+    {
+        if ($use32bytes)
+            return \Ramsey\Uuid\Uuid::uuid4()->getHex();
+
+        return \Ramsey\Uuid\Uuid::uuid4()->getNodeHex();
     }
 
 }
