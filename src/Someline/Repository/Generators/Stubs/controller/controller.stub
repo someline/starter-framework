@@ -7,8 +7,8 @@ use Dingo\Api\Exception\StoreResourceFailedException;
 use Dingo\Api\Exception\UpdateResourceFailedException;
 use Illuminate\Http\Request;
 use Prettus\Validator\Contracts\ValidatorInterface;
-use $APPNAME$Http\Requests\$CLASS$CreateRequest;
-use $APPNAME$Http\Requests\$CLASS$UpdateRequest;
+use $APPNAME$Http\Requests\$LONG_CLASS$CreateRequest;
+use $APPNAME$Http\Requests\$LONG_CLASS$UpdateRequest;
 $REPOSITORY$
 $VALIDATOR$
 

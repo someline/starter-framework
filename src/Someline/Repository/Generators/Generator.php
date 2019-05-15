@@ -97,6 +97,7 @@ abstract class Generator
     {
         return [
             'class'          => $this->getClass(),
+            'long_class'     => str_replace('/', '\\', $this->getName()),
             'namespace'      => $this->getNamespace(),
             'root_namespace' => $this->getRootNamespace()
         ];
