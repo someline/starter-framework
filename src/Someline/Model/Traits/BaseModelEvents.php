@@ -41,7 +41,7 @@ trait BaseModelEvents
         // auto set user id
         if ($this->autoUserId && empty($this->user_id)) {
             $user_id = $this->getAuthUserId();
-            if ($user_id > 0) {
+            if ($this->validUserId($user_id)) {
                 $this->user_id = $user_id;
             }
         }
@@ -94,4 +94,20 @@ trait BaseModelEvents
     public function onRestored()
     {
     }
+
+    /**
+     * check the $user_id is valid.
+     *
+     * @param  int|string $user_id
+     * @return bool
+     */
+    protected function validUserId($user_id): bool
+    {
+        if ('int' === $this->keyType)
+            return $user_id > 0;
+
+        if ('string' === $this->keyType)
+            return strlen($user_id) > 0;
+    }
+
 }
