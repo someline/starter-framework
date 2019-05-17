@@ -42,11 +42,11 @@ trait BaseModelEvents
          * check whether the UUID primary key is used.
          *
          * if the $primaryKey value is string(single key), not an array(union key),
-         * and $incrementing is false, $keytype is string,
+         * and $incrementing is false, $keyType is string,
          * automatically use UUID as $primaryKey if the $primaryKey is empty.
          */
         $keyIsEmpty = is_string($this->primaryKey) && empty(array_get($this->attributes, $this->primaryKey));
-        if ($keyIsEmpty && false === $this->incrementing && 'string' === $this->keyType)
+        if ($keyIsEmpty && (false === $this->incrementing) && ('string' === $this->keyType))
             $this->attributes[$this->primaryKey] = $this->uuid();
 
         // auto set user id
