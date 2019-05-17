@@ -136,21 +136,6 @@ class BaseModel extends Model implements BaseModelEventsInterface
     }
 
     /**
-     * check the $user_id is valid.
-     *
-     * @param  int|string $user_id
-     * @return bool
-     */
-    protected function validUserId($user_id): bool
-    {
-        if ('int' === $this->keyType)
-            return $user_id > 0;
-
-        if ('string' === $this->keyType)
-            return strlen($user_id) > 0;
-    }
-
-    /**
      * Update the creation and update by users.
      *
      * @return void
@@ -312,6 +297,5 @@ class BaseModel extends Model implements BaseModelEventsInterface
     {
         return $this->updated_at;
     }
-
 
 }
